@@ -1,4 +1,3 @@
-
 package Lab1;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
