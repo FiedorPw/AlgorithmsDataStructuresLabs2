@@ -23,27 +23,24 @@ public class DividingD {
             }
             hashMap.put( moduloresult ,tmpvalue +1);
         }
-
+        System.out.println(hashMap);
         if(hashMap.get(0) != null && hashMap.get(0)%2 ==1){
             return false;
         }else {
             hashMap.remove(0);
         }
-
         System.out.println(hashMap);
-
         int k = d-1;
         for (int i = 1; i < d/2+1; i++) {
-            if(!hashMap.get(i).equals(hashMap.get(k))){
+            if(hashMap.get(i) != null && hashMap.get(k) != null && !hashMap.get(i).equals(hashMap.get(k))){
                 return false;
-            }else if(i == k && hashMap.get(i)%2 == 1) {
+            }else if(hashMap.get(i) != null && hashMap.get(k) != null && i == k && hashMap.get(i)%2 == 1) {
                 return false;
             }else{
 
                 k--;
             }
         }
-
         return true;
     }
 }
