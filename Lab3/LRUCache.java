@@ -3,11 +3,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-public class LRUCache<T> {
+public class LRUCache<T,k> {
 
     private final int capacity;
     private int size;
-    private final Map<String, Node> hashmap;
+    private final Map<k, Node> hashmap;
     private final DoublyLinkedList internalQueue;
 
     LRUCache(final int capacity) {
@@ -37,7 +37,7 @@ public class LRUCache<T> {
                 '}';
     }
 
-    public T get(final String key) {
+    public T get(final k key) {
         Node node = hashmap.get(key);
         if(node == null) {
             throw new NoSuchElementException();
@@ -46,7 +46,7 @@ public class LRUCache<T> {
         return hashmap.get(key).value;
     }
 
-    public void put(final String key, final T value) {
+    public void put(final k key, final T value) {
         Node currentNode = hashmap.get(key);
         //blokada przed pobieraniem
         if(currentNode != null) {
@@ -56,7 +56,7 @@ public class LRUCache<T> {
         }
         //overlow wywalanie elementu
         if(size == capacity) {
-            String rearNodeKey = internalQueue.getRearKey();
+            k rearNodeKey = internalQueue.getRearKey();
             internalQueue.removeNodeFromRear();
             hashmap.remove(rearNodeKey);
             size--;
@@ -68,11 +68,11 @@ public class LRUCache<T> {
         size++;
     }
 
-    private class Node {
-        String key;
+    class Node {
+        k key;
         T value;
         Node next, prev;
-        public Node(final String key, final T value) {
+        public Node(final k key, final T value) {
             this.key = key;
             this.value = value;
             this.next = null;
@@ -130,7 +130,7 @@ public class LRUCache<T> {
             }
         }
 
-        private String getRearKey() {
+        private k getRearKey() {
             return rear.key;
         }
     }

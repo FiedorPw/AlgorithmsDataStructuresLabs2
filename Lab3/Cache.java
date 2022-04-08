@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class Cache<T> {
   public static void main(String[] args){
-      LRUCache cache = new LRUCache(3);
+      LRUCache cache = new LRUCache<String,Integer>(3);
       cache.put("klucz1",1);
       cache.put("klucz2",2);
       cache.put("klucz3",3);
