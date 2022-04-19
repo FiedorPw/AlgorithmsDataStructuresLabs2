@@ -1,18 +1,19 @@
 package Lab3;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Node {
-    LinkedList<Node> edges = new LinkedList<Node>();
-    int index;
+    ArrayList<Integer> edges = new ArrayList<>();
+   // int index;
 
-    void addVerticies(Node node){
-        edges.add(node);
+    void addVerticies(int index ){
+        edges.add(index);
     }
 
-    public Node(int index, Node edge) {
-        this.index = index;
-        edges.add(edge);
+    public Node() {
+
+
     }
 
     public static void main(String[] args){
