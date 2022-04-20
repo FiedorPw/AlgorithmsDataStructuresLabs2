@@ -1,5 +1,6 @@
 package Lab3;
 
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -10,22 +11,25 @@ public class Graph {
     int[] edges;
     int firstNode;
     int secondNode;
+    int numberOfVerticies = 0;
+    int pointer = 1;
+    int endPointer = 0;
+    Node[] traversedNodes;
 
     public static void main(String[] args){
-       Graph graph = new Graph(8);
-       graph.readGraph();
-       graph.printNodes();
-
-
-    }
-    public Graph(int size) {
+        Graph graph = new Graph();
+        graph.readGraph();
+        graph.printNodes();
+        graph.printRoute(0,5);
+        graph.printRoute(0,2);
 
 
 
     }
+
     public void readGraph(){
         try {
-            int numberOfVerticies = 0;
+
             int numberOfEdges = 0;
             File file = new File("/home/kolaj/IdeaProjects/apro2_22l_fiedorczuk_mikolaj/Lab3/graph.txt");
             FileReader fileReader = new FileReader(file);
@@ -40,7 +44,8 @@ public class Graph {
                     createVerticies(line);
                   }else if (i == 0){
                     numberOfVerticies = Integer.parseInt(line);
-                    nodes = new Node[numberOfVerticies];
+                    nodes = new Node[numberOfVerticies]; //ustawianie wielkosci arraya
+                    traversedNodes = new Node[numberOfVerticies+2]; //ustawianie arraya dla metody find
                   }else if (i == 1){
                     numberOfEdges = Integer.parseInt(line);
                     edges = new int[numberOfEdges];
@@ -50,7 +55,6 @@ public class Graph {
             }
             fileReader.close();
             bufferedReader.close();
-            String graphString = stringBuffer.toString();
 
         } catch (Exception e) {
             System.out.println("sypa z czytaniem");
@@ -63,7 +67,7 @@ public class Graph {
         char secondNodech = vertis.charAt(2);
         firstNode = Character.getNumericValue(firstNodech);
         secondNode = Character.getNumericValue(secondNodech);
-        System.out.println(firstNode + " " + secondNode );
+      // System.out.println(firstNode + " " + secondNode );
         if(nodes[firstNode] == null){
             nodes[firstNode] = new Node();
         }
@@ -75,6 +79,7 @@ public class Graph {
     }
 
     public void printNodes(){
+        System.out.println("structure of a graph");
         for (int i = 0; i < nodes.length; i++) {
 
             System.out.print(i + ": " );
@@ -85,9 +90,46 @@ public class Graph {
 
         }
     }
-
-    public class pathFinder{
+    public void printRoute(int start,int finish){
+        pointer = 1;
+        endPointer = 0;
+        findPath(start,finish);
+        Node currentNode = traversedNodes[finish];
+        List<Node> arrayListNodes  = Arrays.asList(nodes);
+        ArrayList<Integer> listToReverse = new ArrayList<>();
+        System.out.print("\nroute from " + start + " to " + finish + ": " + start);
+        while(currentNode != nodes[start] ){
+            listToReverse.add(arrayListNodes.indexOf(currentNode));
+           int currentParent= currentNode.parent;
+            currentNode = nodes[currentParent];
+        }
+        Collections.reverse(listToReverse);
+        for (int item:
+             listToReverse) {
+            System.out.print("->" + item  );
+        }
 
 
     }
+    private void findPath(int start,int finish){
+
+
+        if(start == finish){
+            return;
+        }
+
+        traversedNodes[endPointer] = nodes[start];
+        for (int edge:nodes[start].edges) {
+            if(edge != nodes[start].parent) {
+                traversedNodes[pointer] = nodes[edge];
+                traversedNodes[pointer].setParent(start);
+                pointer++;
+            }
+        }
+        endPointer++;
+        findPath(endPointer,finish);
+
+
+    }
+
 }

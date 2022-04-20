@@ -5,15 +5,14 @@ import java.util.LinkedList;
 
 public class Node {
     ArrayList<Integer> edges = new ArrayList<>();
-   // int index;
+    int parent;
 
     void addVerticies(int index ){
         edges.add(index);
     }
 
-    public Node() {
-
-
+    public void setParent(int parent) {
+        this.parent = parent;
     }
 
     public static void main(String[] args){
