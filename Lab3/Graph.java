@@ -17,6 +17,7 @@ public class Graph {
     Node[] traversedNodes;
 
     public static void main(String[] args){
+
         Graph graph = new Graph();
         graph.readGraph();
         graph.printNodes();

@@ -2,7 +2,7 @@ package Lab4;
 
 import java.util.ArrayList;
 
-public class Edge{
+public class Edge implements Comparable<Edge> {
     Node to;
     Node from;
     int weight;
@@ -25,5 +25,27 @@ public class Edge{
     public int getWeight() {
         return weight;
     }
-}
 
+    public void printEdge() {
+        System.out.println(" " + from + "-" + weight + "->" + to);
+    }
+
+//    @Override
+//    public int compareTo(Edge o) {
+//        if (this.getWeight() == o.getWeight()) return 0;
+//        else if(this.getWeight() > o.getWeight()) return 1;
+//        else  return -1;
+//    }
+
+    public int compareTo(Edge compareFruit) {
+
+        int compareQuantity = ((Edge) compareFruit).getWeight();
+
+        //ascending order
+        return this.getWeight() - compareQuantity;
+
+        //descending order
+        // return compareQuantity - this.getWeight();
+
+    }
+}
