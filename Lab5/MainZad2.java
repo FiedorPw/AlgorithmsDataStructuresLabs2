@@ -15,17 +15,19 @@ public class MainZad2 {
     }
 
     public static void main(String[] input) {
-        if (input.length != 1) {
+
+        if (input.length != 1) {   //sprawdza czy podano jeden argumet
             System.out.println("Wrong password!");
         } else {
             String var1 = input[0];
-            String[] tablicaInputow = var1.split("_");
+            String[] inputString = var1.split("_");
             Date czasOdTeraz = Date.from(Instant.now());
             SimpleDateFormat lata = new SimpleDateFormat("yyyy");
             String JakisCzas = lata.format(czasOdTeraz);
             int var6 = Integer.parseInt(JakisCzas);
-            if (tablicaInputow[0].length() == 7 && tablicaInputow[1].length() == 4) {
-                if (tablicaInputow[0].equals(Coder.code("u78GRZ6")) && Integer.parseInt(tablicaInputow[1]) == var6) {
+
+            if (inputString[0].length() == 7 && inputString[1].length() == 4) {
+                if (inputString[0].equals(Coder.code("u78GRZ6")) && Integer.parseInt(inputString[1]) == var6) {
                     System.out.println("Good guess");
                 } else {
                     System.out.println("Wrong password!");
@@ -33,7 +35,8 @@ public class MainZad2 {
             } else {
                 System.out.println("Wrong password!");
             }
-
+            System.out.println(Coder.code("u78GRZ6"));
+            System.out.println(Integer.parseInt(inputString[1]));
         }
 
 

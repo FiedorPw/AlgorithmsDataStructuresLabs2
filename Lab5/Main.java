@@ -2,6 +2,7 @@ package Lab5;
 
 public class Main {
     public static void main(String[] args){
+
         StringConPlus stringConPlus = new StringConPlus();
         System.out.println(stringConPlus.concatenate("ap","ro2"));
 
