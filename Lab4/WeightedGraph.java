@@ -20,8 +20,8 @@
 //        weightedGraph.printNodes();
 //        Prim prim = new Prim(weightedGraph.nodeList,weightedGraph.edgeList);
 //        prim.printMST(weightedGraph.nodeList,weightedGraph.edgeList);
-////        Kruskal kruskal = new Kruskal(weightedGraph.nodeList,weightedGraph.edgeList);
-////        kruskal.printMST(weightedGraph.nodeList,weightedGraph.edgeList);
+//        Kruskal kruskal = new Kruskal(weightedGraph.nodeList,weightedGraph.edgeList);
+//        kruskal.printMST(weightedGraph.nodeList,weightedGraph.edgeList);
 //
 //    }
 //    public void addNode(int amount){

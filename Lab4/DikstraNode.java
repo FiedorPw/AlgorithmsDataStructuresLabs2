@@ -9,6 +9,10 @@ public class DikstraNode {
         public void addEdge(Edge edge) {
             edges.add(edge);
         }
+
+
+
+
 }
 
 
