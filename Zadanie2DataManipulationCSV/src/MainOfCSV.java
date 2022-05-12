@@ -15,9 +15,15 @@ public class MainOfCSV {
             System.out.println(i + ":" + mainArray[0][i]);
         }
         System.out.println("666:to exit");
+
+
         StringOperations stringOperations = new StringOperations(mainArray,2);
         stringOperations.amoutOfOptions();
         stringOperations.percents();
+
+        IntOperations intOperations = new IntOperations(mainArray,6);
+        intOperations.maxValue();
+        intOperations.minvalue();
 
 
 
